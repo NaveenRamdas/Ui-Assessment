@@ -65,11 +65,19 @@ const Home = () => {
     const handleBtnClick = (type) => {
         setShowData(true)
         setBtnType(type);
+        setPageDetails((prev) => ({
+            ...prev,
+            page: 1,
+        }));
 
     }
     const handleBtnClickScroll = (type) => {
         setShowData(true)
         setBtnType(type);
+        setPageDetails((prev) => ({
+            ...prev,
+            page: 1,
+        }));
 
     }
     const fetchDataScroll = async () => {
