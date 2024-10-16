@@ -65,12 +65,12 @@ const Home = () => {
     const handleBtnClick = (type) => {
         setShowData(true)
         setBtnType(type);
-        console.log("fromBtn", type)
+
     }
     const handleBtnClickScroll = (type) => {
         setShowData(true)
         setBtnType(type);
-        console.log("fromBtnScroll", type)
+
     }
     const fetchDataScroll = async () => {
         if (isFetching) return;
@@ -84,7 +84,7 @@ const Home = () => {
             );
             const result = response.data;
 
-            setData((prevData) => [...prevData, ...result]); // Append new data to existing
+            setData((prevData) => [...prevData, ...result]);
             setPageDetails((prev) => ({
                 ...prev,
                 page: prev?.page + 1
@@ -93,33 +93,16 @@ const Home = () => {
             setError("Failed to fetch data");
         } finally {
             setLoading(false);
-            setIsFetching(false); // Allow further fetching once this completes
+            setIsFetching(false);
         }
     };
 
-    // Handle scroll for infinite scrolling
-    const handleScroll = () => {
-        // Check if the user is at the bottom of the page
-        if (
-            window.innerHeight + document.documentElement.scrollTop >=
-            document.documentElement.offsetHeight - 100 && !isFetching
-        ) {
-            // Increase the page number only if not fetching already
 
-        }
-    };
+
 
     console.log("pageitem", pageDetails)
-    // useEffect to attach the scroll event
-    useEffect(() => {
-        if (btnType === "fetchScroll") {
-            window.addEventListener("scroll", handleScroll);
-        }
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [btnType]);
+
 
     useEffect(() => {
         if (btnType === "fetchScroll") {
@@ -186,7 +169,7 @@ const Home = () => {
 
             {!loading && !error && data.length === 0 && <p>Click Button to fetch data</p>}
 
-            {/* Grid Display of Cards */}
+
             {btnType == "fetchOnly" && <>
                 <div
                     style={{
